@@ -1,0 +1,36 @@
+- hosts: all
+  become: yes
+  vars:
+    packages:
+      - apache2
+      - tree
+      - unzip
+    hello: world
+  tasks: 
+  - name: Install packages
+    - hosts: all
+  become: yes
+  tasks:
+  - name: Print OS
+    debug: msg="{{ ansible_destribution }}"
+      name: "{{ packages }}"
+      state: present
+      update_cache: yes
+    when: hello == "world"
+
+  - name: Start service apache, if not started
+    ansible.builtin.service:
+      name: apache2
+      state: started
+      enabled: yes
+
+  # - name: Execute the command in remote shell
+  #   ansible.builtin.shell: useradd tim
+
+  - name: Add the user tim
+    ansible.builtin.user:
+      name: "{{ item }}"
+    loop: 
+    - tim
+    - ann
+    - brad

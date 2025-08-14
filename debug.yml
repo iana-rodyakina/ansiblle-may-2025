@@ -1,0 +1,10 @@
+- hosts: vm1
+  become: yes
+  tasks:
+  - name: Install tree
+    ansible.builtin.service:
+      name: tree
+    register: kaizen
+
+  - name: debug
+    debug: msg="{{ kaizen }}"
