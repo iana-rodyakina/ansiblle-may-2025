@@ -1,0 +1,11 @@
+- hosts: all
+  become: yes
+  tasks:
+  - name: Install Apache
+    include: apache.yml
+  - name: Install packages
+    include: php.yml
+  - name: Install wordpress
+    include: wordpress.yml
+  - name: Install database
+    include: db.yml
