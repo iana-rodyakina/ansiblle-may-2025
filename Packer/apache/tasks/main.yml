@@ -1,0 +1,11 @@
+- name: Install apache 
+  ansible.builtin.apt:
+    name: "{{ package }}"
+    state: present
+    update_cache: yes
+
+- name: Start service apache
+  ansible.builtin.service:
+    name: "{{ package }}"
+    state: "{{ state }}"
+    enabled: yes
